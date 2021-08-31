@@ -1,15 +1,13 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://Scenes/Jack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/Deadworldnexuswall.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Tiles/b.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Lantern1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/DeadworldNexus.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/InitialLab.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sprites/Portal.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/DialogsScene.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Sprites/Portal.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/Weapons/InMap/DarkTome.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Sprites/Sprite1.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/JackTransforming.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/JackAntes.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Sprite1.png" type="Texture" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -624,40 +622,37 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="CanvasItemMaterial" id=97]
-blend_mode = 1
-
-[sub_resource type="Animation" id=98]
+[sub_resource type="Animation" id=97]
 resource_name = "Nueva Animación"
 length = 12.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position:y")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 6, 12 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( -2, -0.5, -2 ),
 "update": 0,
-"values": [ 303.856, 313.856, 303.856 ]
+"values": [ Vector2( 1140.23, 537.323 ), Vector2( 1140.23, 527.323 ), Vector2( 1140.23, 537.323 ) ]
 }
 
-[sub_resource type="Animation" id=99]
-resource_name = "Entertotheworld"
+[sub_resource type="Animation" id=98]
+resource_name = "Prologue"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Portal:scale")
+tracks/0/path = NodePath("CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1.5, 1.8 ),
-"transitions": PoolRealArray( -2, -2, -2, -2 ),
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Jack:canmove")
@@ -666,103 +661,64 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Jack:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Jack:position:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.5, 0.9 ),
-"transitions": PoolRealArray( 2, 2 ),
-"update": 0,
-"values": [ 466.353, 616.353 ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath("Portal")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 2 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
+"update": 1,
+"values": [ false ]
 }
 
-[sub_resource type="Animation" id=100]
-resource_name = "ConfusedDialog"
-length = 2.0
+[sub_resource type="Animation" id=99]
+length = 8.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D/DialogsScene:visible")
+tracks/0/path = NodePath("Jack:canmove")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ false, true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Camera2D/DialogsScene:CharSpr")
+tracks/1/path = NodePath("Jack:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 10 ) ]
+"times": PoolRealArray( 0, 1, 1.5, 2.5 ),
+"transitions": PoolRealArray( -2, -2, -2, -2 ),
+"update": 0,
+"values": [ 343.0, 508.0, 508.0, 343.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Camera2D/DialogsScene:CharScale")
+tracks/2/path = NodePath("Camera2D/DialogsScene:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 2, 2 ) ]
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Camera2D/DialogsScene:CharColor")
+tracks/3/path = NodePath("Camera2D/DialogsScene:CharSpr")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ), null ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Camera2D/DialogsScene:BoxSpr")
+tracks/4/path = NodePath("Camera2D/DialogsScene:CharScale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -770,11 +726,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 9 ) ]
+"update": 0,
+"values": [ Vector2( 2, 2 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Camera2D/DialogsScene:BoxScale")
+tracks/5/path = NodePath("Camera2D/DialogsScene:BoxSpr")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -782,11 +738,11 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 60, 12 ) ]
+"update": 1,
+"values": [ ExtResource( 8 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Camera2D/DialogsScene:BoxColor")
+tracks/6/path = NodePath("Camera2D/DialogsScene:BoxScale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -795,7 +751,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.67451, 0.909804, 0.662745, 1 ) ]
+"values": [ Vector2( 60, 12 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Camera2D/DialogsScene:text1")
@@ -804,10 +760,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "", "W H A T     I S" ]
+"values": [ "Finally, after 30 freaking years of research I will be", "Enter into the portal!" ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Camera2D/DialogsScene:text2")
@@ -816,10 +772,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "", "H A P P E N I N G" ]
+"values": [ "able to enter into the world of dead", "" ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Camera2D/DialogsScene:text3")
@@ -828,45 +784,60 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.9 ),
+"times": PoolRealArray( 8, 8.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "", "T O  M E" ]
+"values": [ "(Hola peter)", "" ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Jack:canmove")
+tracks/10/path = NodePath("Camera2D/DialogsScene:CharColor")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("CanvasModulate:visible")
+tracks/11/path = NodePath("Camera2D/DialogsScene:BoxColor")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6, 0.8, 0.9, 1, 1.1, 1.2, 1.4, 1.6, 1.7, 1.8, 1.9, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, true, false, true, false, true, false, true, true, false, true, false, true, false, true ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.372549 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Jack/AnimatedSprite:flip_h")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
-[node name="DeadworldNexus" type="Node2D"]
-script = ExtResource( 5 )
+[node name="Lab" type="Node2D"]
+script = ExtResource( 4 )
+max_cam_x = 2080
+max_cam_y = 1280
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource( 1 )
-margin_right = 12800.0
+margin_left = 8.61023
+margin_right = 12808.6
 margin_bottom = 7200.0
 texture = ExtResource( 3 )
 stretch_mode = 2
@@ -879,30 +850,14 @@ scale = Vector2( 10, 10 )
 tile_set = SubResource( 96 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 65532, 0, 0, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 5, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 0, 196609, 5, 0, 196609, 6, 0, 196609, 7, 0, 7, 131068, 0, 65536, 131069, 0, 65537, 131070, 0, 65537, 131071, 0, 65537, 65536, 0, 65538, 65543, 0, 65539, 196604, 0, 65536, 196605, 0, 65537, 196606, 0, 65537, 196607, 0, 65537, 131072, 0, 65538, 131079, 0, 65539, 262140, 0, 65536, 262141, 0, 65537, 262142, 0, 65537, 262143, 0, 65537, 196608, 0, 65538, 196615, 0, 65539, 327676, 0, 65536, 327677, 0, 65537, 327678, 0, 65537, 327679, 0, 65537, 262144, 0, 65538, 262151, 0, 65539, 393212, 0, 65536, 393213, 0, 65537, 393214, 0, 65537, 393215, 0, 65537, 327680, 0, 65538, 327687, 0, 196612, 327688, 0, 196609, 327689, 0, 196609, 327690, 0, 196609, 327691, 0, 196609, 327692, 0, 196609, 327693, 0, 196609, 327694, 0, 196610, 458748, 0, 65536, 458749, 0, 65537, 458750, 0, 65537, 458751, 0, 65537, 393216, 0, 65538, 524284, 0, 65536, 524285, 0, 65537, 524286, 0, 65537, 524287, 0, 65537, 458752, 0, 65538, 589820, 0, 65536, 589821, 0, 65537, 589822, 0, 65537, 589823, 0, 65537, 524288, 0, 65538, 655356, 0, 65536, 655357, 0, 65537, 655358, 0, 65537, 655359, 0, 65541, 589824, 0, 196613, 589825, 0, 196609, 589826, 0, 196609, 589827, 0, 196609, 589828, 0, 196609, 589829, 0, 196609, 589830, 0, 196609, 589831, 0, 196609, 589832, 0, 196609, 589833, 0, 196609, 589834, 0, 196609, 589835, 0, 196609, 589836, 0, 196609, 589837, 0, 196609, 589838, 0, 196609, 589839, 0, 196610, 720892, 0, 65536, 720893, 0, 65537, 720894, 0, 65537, 720895, 0, 65538, 786428, 0, 65536, 786429, 0, 65537, 786430, 0, 65537, 786431, 0, 65538, 851964, 0, 65536, 851965, 0, 65537, 851966, 0, 65537, 851967, 0, 65538, 917500, 0, 65536, 917501, 0, 65537, 917502, 0, 65537, 917503, 0, 65538, 983036, 0, 65536, 983037, 0, 65537, 983038, 0, 65537, 983039, 0, 65538, 1048572, 0, 65536, 1048573, 0, 65537, 1048574, 0, 65537, 1048575, 0, 65538, 1114108, 0, 65536, 1114109, 0, 65537, 1114110, 0, 65537, 1114111, 0, 65538, 1179644, 0, 65536, 1179645, 0, 65537, 1179646, 0, 65537, 1179647, 0, 65538, 1245180, 0, 65536, 1245181, 0, 65537, 1245182, 0, 65537, 1245183, 0, 65538, 1310716, 0, 65536, 1310717, 0, 65537, 1310718, 0, 65537, 1310719, 0, 65538, 1376252, 0, 65536, 1376253, 0, 65537, 1376254, 0, 65537, 1376255, 0, 65538, 1441788, 0, 65536, 1441789, 0, 65537, 1441790, 0, 65537, 1441791, 0, 65538, 1507324, 0, 65536, 1507325, 0, 65537, 1507326, 0, 65537, 1507327, 0, 65538, 1572860, 0, 65536, 1572861, 0, 65537, 1572862, 0, 65537, 1572863, 0, 65538, 1638396, 0, 65536, 1638397, 0, 65537, 1638398, 0, 65537, 1638399, 0, 65538, 1703932, 0, 65536, 1703933, 0, 65537, 1703934, 0, 65537, 1703935, 0, 65538, 1769468, 0, 65536, 1769469, 0, 65537, 1769470, 0, 65537, 1769471, 0, 65538, 1835004, 0, 65536, 1835005, 0, 65537, 1835006, 0, 65537, 1835007, 0, 65538, 1900540, 0, 65536, 1900541, 0, 65537, 1900542, 0, 65537, 1900543, 0, 65538, 1966076, 0, 65536, 1966077, 0, 65537, 1966078, 0, 65537, 1966079, 0, 65538, 2031612, 0, 65536, 2031613, 0, 65537, 2031614, 0, 65537, 2031615, 0, 65538, 2097148, 0, 65536, 2097149, 0, 65537, 2097150, 0, 65537, 2097151, 0, 65538, 2162684, 0, 65536, 2162685, 0, 65537, 2162686, 0, 65537, 2162687, 0, 65538, 2228220, 0, 65536, 2228221, 0, 65537, 2228222, 0, 65537, 2228223, 0, 65538, 2293756, 0, 65536, 2293757, 0, 65537, 2293758, 0, 65537, 2293759, 0, 65538, 2359291, 0, 0, 2359292, 0, 131078, 2359293, 0, 65537, 2359294, 0, 65537, 2359295, 0, 65538, 2424827, 0, 65536, 2424828, 0, 65537, 2424829, 0, 65537, 2424830, 0, 65537, 2424831, 0, 65538, 2490363, 0, 65536, 2490364, 0, 65537, 2490365, 0, 65537, 2490366, 0, 65537, 2490367, 0, 65538, 2555899, 0, 65536, 2555900, 0, 65537, 2555901, 0, 65537, 2555902, 0, 65537, 2555903, 0, 65538, 2621435, 0, 65536, 2621436, 0, 65537, 2621437, 0, 65537, 2621438, 0, 65537, 2621439, 0, 65538, 2686971, 0, 65536, 2686972, 0, 65537, 2686973, 0, 65537, 2686974, 0, 65537, 2686975, 0, 65538, 2752506, 0, 0, 2752507, 0, 131078, 2752508, 0, 65537, 2752509, 0, 65537, 2752510, 0, 65537, 2752511, 0, 65538, 2818042, 0, 65536, 2818043, 0, 65537, 2818044, 0, 65537, 2818045, 0, 65537, 2818046, 0, 65537, 2818047, 0, 65538, 2883578, 0, 65536, 2883579, 0, 65537, 2883580, 0, 65537, 2883581, 0, 65537, 2883582, 0, 65537, 2883583, 0, 65538, 2949114, 0, 131072, 2949115, 0, 131073, 2949116, 0, 131073, 2949117, 0, 131073, 2949118, 0, 131073, 2949119, 0, 131074 )
-
-[node name="Lights" type="Node2D" parent="."]
-
-[node name="Lantern" parent="Lights" instance=ExtResource( 4 )]
-position = Vector2( 240.695, 350.642 )
-
-[node name="Lantern2" parent="Lights" instance=ExtResource( 4 )]
-position = Vector2( 1038.37, 358.185 )
-
-[node name="Lantern3" parent="Lights" instance=ExtResource( 4 )]
-position = Vector2( 1999.25, 1007.49 )
-
-[node name="Lantern4" parent="Lights" instance=ExtResource( 4 )]
-position = Vector2( 281.077, 1342.82 )
+tile_data = PoolIntArray( 65532, 0, 0, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 5, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 0, 196609, 5, 0, 196609, 6, 0, 196609, 7, 0, 196609, 8, 0, 196609, 9, 0, 196609, 10, 0, 196609, 11, 0, 6, 12, 0, 1, 13, 0, 1, 14, 0, 5, 15, 0, 196609, 16, 0, 196609, 17, 0, 196609, 18, 0, 196609, 19, 0, 196609, 20, 0, 196609, 21, 0, 6, 22, 0, 1, 23, 0, 1, 24, 0, 1, 25, 0, 1, 26, 0, 1, 27, 0, 2, 131068, 0, 65536, 131069, 0, 65537, 131070, 0, 65537, 131071, 0, 65537, 65536, 0, 65538, 65547, 0, 65536, 65548, 0, 65537, 65549, 0, 65537, 65550, 0, 65538, 65557, 0, 65536, 65558, 0, 65537, 65559, 0, 65537, 65560, 0, 65537, 65561, 0, 65537, 65562, 0, 65537, 65563, 0, 65538, 196604, 0, 65536, 196605, 0, 65537, 196606, 0, 65537, 196607, 0, 65537, 131072, 0, 65538, 131083, 0, 65536, 131084, 0, 65537, 131085, 0, 65537, 131086, 0, 65538, 131093, 0, 65536, 131094, 0, 65537, 131095, 0, 65537, 131096, 0, 65537, 131097, 0, 65537, 131098, 0, 65537, 131099, 0, 65538, 262140, 0, 65536, 262141, 0, 65537, 262142, 0, 65537, 262143, 0, 65537, 196608, 0, 65538, 196619, 0, 65536, 196620, 0, 65537, 196621, 0, 65537, 196622, 0, 65538, 196629, 0, 65536, 196630, 0, 65537, 196631, 0, 65537, 196632, 0, 65537, 196633, 0, 65537, 196634, 0, 65537, 196635, 0, 65538, 327676, 0, 65536, 327677, 0, 65537, 327678, 0, 65537, 327679, 0, 65537, 262144, 0, 65538, 262155, 0, 65536, 262156, 0, 65537, 262157, 0, 65537, 262158, 0, 65538, 262165, 0, 65536, 262166, 0, 65537, 262167, 0, 65537, 262168, 0, 65537, 262169, 0, 65537, 262170, 0, 65537, 262171, 0, 65538, 393212, 0, 65536, 393213, 0, 65537, 393214, 0, 65537, 393215, 0, 65537, 327680, 0, 65538, 327691, 0, 65536, 327692, 0, 65537, 327693, 0, 65537, 327694, 0, 65538, 327701, 0, 65536, 327702, 0, 65537, 327703, 0, 65537, 327704, 0, 65537, 327705, 0, 65537, 327706, 0, 65537, 327707, 0, 65538, 458748, 0, 65536, 458749, 0, 65537, 458750, 0, 65537, 458751, 0, 65537, 393216, 0, 65538, 393227, 0, 65536, 393228, 0, 65537, 393229, 0, 65537, 393230, 0, 65538, 393237, 0, 65536, 393238, 0, 65537, 393239, 0, 65537, 393240, 0, 65537, 393241, 0, 65537, 393242, 0, 65537, 393243, 0, 65538, 524284, 0, 65536, 524285, 0, 65537, 524286, 0, 65537, 524287, 0, 65537, 458752, 0, 131077, 458753, 0, 1, 458754, 0, 2, 458757, 0, 0, 458758, 0, 1, 458759, 0, 1, 458760, 0, 1, 458761, 0, 1, 458762, 0, 1, 458763, 0, 131078, 458764, 0, 65537, 458765, 0, 65537, 458766, 0, 65538, 458773, 0, 65536, 458774, 0, 65537, 458775, 0, 65537, 458776, 0, 65537, 458777, 0, 65537, 458778, 0, 65537, 458779, 0, 65538, 589820, 0, 65536, 589821, 0, 65537, 589822, 0, 65537, 589823, 0, 65537, 524288, 0, 65537, 524289, 0, 65537, 524290, 0, 131077, 524291, 0, 1, 524292, 0, 1, 524293, 0, 131078, 524294, 0, 65537, 524295, 0, 65537, 524296, 0, 65537, 524297, 0, 65537, 524298, 0, 65537, 524299, 0, 65537, 524300, 0, 65537, 524301, 0, 65537, 524302, 0, 65538, 524309, 0, 65536, 524310, 0, 65537, 524311, 0, 65537, 524312, 0, 65537, 524313, 0, 65537, 524314, 0, 65537, 524315, 0, 65538, 655356, 0, 65536, 655357, 0, 65537, 655358, 0, 65537, 655359, 0, 65537, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 65537, 589829, 0, 65537, 589830, 0, 65537, 589831, 0, 65537, 589832, 0, 65537, 589833, 0, 65537, 589834, 0, 65537, 589835, 0, 65537, 589836, 0, 65537, 589837, 0, 65537, 589838, 0, 65538, 589844, 0, 0, 589845, 0, 131078, 589846, 0, 65537, 589847, 0, 65537, 589848, 0, 65537, 589849, 0, 65537, 589850, 0, 65537, 589851, 0, 65538, 720892, 0, 65536, 720893, 0, 65537, 720894, 0, 65537, 720895, 0, 65537, 655360, 0, 65541, 655361, 0, 131073, 655362, 0, 131073, 655363, 0, 131073, 655364, 0, 131073, 655365, 0, 131073, 655366, 0, 131073, 655367, 0, 131073, 655368, 0, 131073, 655369, 0, 131073, 655370, 0, 131073, 655371, 0, 131073, 655372, 0, 131073, 655373, 0, 131073, 655374, 0, 131074, 655380, 0, 65536, 655381, 0, 65537, 655382, 0, 65537, 655383, 0, 65537, 655384, 0, 65537, 655385, 0, 65537, 655386, 0, 65537, 655387, 0, 65538, 786428, 0, 65536, 786429, 0, 65537, 786430, 0, 65537, 786431, 0, 65537, 720896, 0, 65538, 720916, 0, 65536, 720917, 0, 65537, 720918, 0, 65537, 720919, 0, 65537, 720920, 0, 65537, 720921, 0, 65537, 720922, 0, 65537, 720923, 0, 65538, 851964, 0, 65536, 851965, 0, 65537, 851966, 0, 65537, 851967, 0, 65537, 786432, 0, 65538, 786444, 0, 0, 786445, 0, 1, 786446, 0, 1, 786447, 0, 1, 786448, 0, 1, 786449, 0, 1, 786450, 0, 1, 786451, 0, 1, 786452, 0, 131078, 786453, 0, 65537, 786454, 0, 65537, 786455, 0, 65537, 786456, 0, 65537, 786457, 0, 65537, 786458, 0, 65537, 786459, 0, 65538, 917500, 0, 65536, 917501, 0, 65537, 917502, 0, 65537, 917503, 0, 65537, 851968, 0, 131077, 851969, 0, 1, 851970, 0, 2, 851973, 0, 0, 851974, 0, 1, 851975, 0, 1, 851976, 0, 1, 851977, 0, 1, 851978, 0, 1, 851979, 0, 1, 851980, 0, 131078, 851981, 0, 65537, 851982, 0, 65537, 851983, 0, 65537, 851984, 0, 65537, 851985, 0, 65537, 851986, 0, 65537, 851987, 0, 65537, 851988, 0, 65537, 851989, 0, 65537, 851990, 0, 65537, 851991, 0, 65537, 851992, 0, 65537, 851993, 0, 65537, 851994, 0, 65537, 851995, 0, 65538, 983036, 0, 65536, 983037, 0, 65537, 983038, 0, 65537, 983039, 0, 65537, 917504, 0, 65537, 917505, 0, 65537, 917506, 0, 65538, 917509, 0, 65536, 917510, 0, 65537, 917511, 0, 65537, 917512, 0, 65537, 917513, 0, 65537, 917514, 0, 65537, 917515, 0, 65537, 917516, 0, 65537, 917517, 0, 65537, 917518, 0, 65537, 917519, 0, 65537, 917520, 0, 65537, 917521, 0, 65537, 917522, 0, 65537, 917523, 0, 65537, 917524, 0, 65537, 917525, 0, 65537, 917526, 0, 65537, 917527, 0, 65537, 917528, 0, 65537, 917529, 0, 65537, 917530, 0, 65537, 917531, 0, 65538, 1048572, 0, 65536, 1048573, 0, 65537, 1048574, 0, 65537, 1048575, 0, 65537, 983040, 0, 65537, 983041, 0, 65537, 983042, 0, 131077, 983043, 0, 1, 983044, 0, 1, 983045, 0, 131078, 983046, 0, 65537, 983047, 0, 65537, 983048, 0, 65537, 983049, 0, 65537, 983050, 0, 65537, 983051, 0, 65537, 983052, 0, 65537, 983053, 0, 65537, 983054, 0, 65537, 983055, 0, 65537, 983056, 0, 65537, 983057, 0, 65537, 983058, 0, 65537, 983059, 0, 65537, 983060, 0, 65537, 983061, 0, 65537, 983062, 0, 65537, 983063, 0, 65537, 983064, 0, 65537, 983065, 0, 65537, 983066, 0, 65537, 983067, 0, 65538, 1114108, 0, 65536, 1114109, 0, 65537, 1114110, 0, 65537, 1114111, 0, 65537, 1048576, 0, 65537, 1048577, 0, 65537, 1048578, 0, 65537, 1048579, 0, 65537, 1048580, 0, 65537, 1048581, 0, 65537, 1048582, 0, 65537, 1048583, 0, 65537, 1048584, 0, 65537, 1048585, 0, 65537, 1048586, 0, 65537, 1048587, 0, 65537, 1048588, 0, 65537, 1048589, 0, 65537, 1048590, 0, 65537, 1048591, 0, 65537, 1048592, 0, 65537, 1048593, 0, 65537, 1048594, 0, 65537, 1048595, 0, 65537, 1048596, 0, 65537, 1048597, 0, 65537, 1048598, 0, 65537, 1048599, 0, 65537, 1048600, 0, 65537, 1048601, 0, 65537, 1048602, 0, 65537, 1048603, 0, 65538, 1179644, 0, 65536, 1179645, 0, 65537, 1179646, 0, 65537, 1179647, 0, 65537, 1114112, 0, 65537, 1114113, 0, 65537, 1114114, 0, 65537, 1114115, 0, 65537, 1114116, 0, 65537, 1114117, 0, 65537, 1114118, 0, 65537, 1114119, 0, 65537, 1114120, 0, 65537, 1114121, 0, 65537, 1114122, 0, 65537, 1114123, 0, 65537, 1114124, 0, 65537, 1114125, 0, 65537, 1114126, 0, 65537, 1114127, 0, 65537, 1114128, 0, 65537, 1114129, 0, 65537, 1114130, 0, 65537, 1114131, 0, 65537, 1114132, 0, 65537, 1114133, 0, 65537, 1114134, 0, 65537, 1114135, 0, 65537, 1114136, 0, 65537, 1114137, 0, 65537, 1114138, 0, 65537, 1114139, 0, 65538, 1245180, 0, 65536, 1245181, 0, 65537, 1245182, 0, 65537, 1245183, 0, 65537, 1179648, 0, 65537, 1179649, 0, 65537, 1179650, 0, 65537, 1179651, 0, 65537, 1179652, 0, 65537, 1179653, 0, 65537, 1179654, 0, 65537, 1179655, 0, 65537, 1179656, 0, 65537, 1179657, 0, 65537, 1179658, 0, 65537, 1179659, 0, 65537, 1179660, 0, 65537, 1179661, 0, 65537, 1179662, 0, 65537, 1179663, 0, 65537, 1179664, 0, 65537, 1179665, 0, 65537, 1179666, 0, 65537, 1179667, 0, 65537, 1179668, 0, 65537, 1179669, 0, 65537, 1179670, 0, 65537, 1179671, 0, 65537, 1179672, 0, 65537, 1179673, 0, 65537, 1179674, 0, 65537, 1179675, 0, 65538, 1310716, 0, 65536, 1310717, 0, 65537, 1310718, 0, 65537, 1310719, 0, 65537, 1245184, 0, 65537, 1245185, 0, 65537, 1245186, 0, 65537, 1245187, 0, 65537, 1245188, 0, 65537, 1245189, 0, 65537, 1245190, 0, 65537, 1245191, 0, 65537, 1245192, 0, 65537, 1245193, 0, 65537, 1245194, 0, 65537, 1245195, 0, 65537, 1245196, 0, 65537, 1245197, 0, 65537, 1245198, 0, 65537, 1245199, 0, 65537, 1245200, 0, 65537, 1245201, 0, 65537, 1245202, 0, 65537, 1245203, 0, 65537, 1245204, 0, 65537, 1245205, 0, 65537, 1245206, 0, 65537, 1245207, 0, 65537, 1245208, 0, 65537, 1245209, 0, 65537, 1245210, 0, 65541, 1245211, 0, 131074, 1376252, 0, 65536, 1376253, 0, 65537, 1376254, 0, 65537, 1376255, 0, 65537, 1310720, 0, 65537, 1310721, 0, 65537, 1310722, 0, 65537, 1310723, 0, 65537, 1310724, 0, 65537, 1310725, 0, 65537, 1310726, 0, 65537, 1310727, 0, 65537, 1310728, 0, 65537, 1310729, 0, 65537, 1310730, 0, 65537, 1310731, 0, 65537, 1310732, 0, 65537, 1310733, 0, 65537, 1310734, 0, 65537, 1310735, 0, 65537, 1310736, 0, 65537, 1310737, 0, 65537, 1310738, 0, 65537, 1310739, 0, 65537, 1310740, 0, 65537, 1310741, 0, 65537, 1310742, 0, 65537, 1310743, 0, 65537, 1310744, 0, 65541, 1310745, 0, 131073, 1310746, 0, 131074, 1441788, 0, 65536, 1441789, 0, 65537, 1441790, 0, 65537, 1441791, 0, 65537, 1376256, 0, 65537, 1376257, 0, 65537, 1376258, 0, 65537, 1376259, 0, 65537, 1376260, 0, 65537, 1376261, 0, 65537, 1376262, 0, 65537, 1376263, 0, 65537, 1376264, 0, 65537, 1376265, 0, 65537, 1376266, 0, 65537, 1376267, 0, 65537, 1376268, 0, 65537, 1376269, 0, 65537, 1376270, 0, 65537, 1376271, 0, 65537, 1376272, 0, 65537, 1376273, 0, 65537, 1376274, 0, 65537, 1376275, 0, 65537, 1376276, 0, 65537, 1376277, 0, 65537, 1376278, 0, 65537, 1376279, 0, 65541, 1376280, 0, 131074, 1507324, 0, 65536, 1507325, 0, 65537, 1507326, 0, 65537, 1507327, 0, 65537, 1441792, 0, 65537, 1441793, 0, 65537, 1441794, 0, 65537, 1441795, 0, 65537, 1441796, 0, 65537, 1441797, 0, 65537, 1441798, 0, 65537, 1441799, 0, 65537, 1441800, 0, 65537, 1441801, 0, 65537, 1441802, 0, 65537, 1441803, 0, 65537, 1441804, 0, 65537, 1441805, 0, 65537, 1441806, 0, 65537, 1441807, 0, 65537, 1441808, 0, 65537, 1441809, 0, 65537, 1441810, 0, 65537, 1441811, 0, 65537, 1441812, 0, 65537, 1441813, 0, 65537, 1441814, 0, 65541, 1441815, 0, 131074, 1572860, 0, 65536, 1572861, 0, 65537, 1572862, 0, 65537, 1572863, 0, 65537, 1507328, 0, 65537, 1507329, 0, 65537, 1507330, 0, 65537, 1507331, 0, 65537, 1507332, 0, 65537, 1507333, 0, 65541, 1507334, 0, 131073, 1507335, 0, 131073, 1507336, 0, 131073, 1507337, 0, 131073, 1507338, 0, 131073, 1507339, 0, 131073, 1507340, 0, 131073, 1507341, 0, 131073, 1507342, 0, 131073, 1507343, 0, 131073, 1507344, 0, 131073, 1507345, 0, 131073, 1507346, 0, 131073, 1507347, 0, 65542, 1507348, 0, 65537, 1507349, 0, 65541, 1507350, 0, 131074, 1638396, 0, 65536, 1638397, 0, 65537, 1638398, 0, 65537, 1638399, 0, 65537, 1572864, 0, 65537, 1572865, 0, 65541, 1572866, 0, 131073, 1572867, 0, 131073, 1572868, 0, 131073, 1572869, 0, 131074, 1572883, 0, 131072, 1572884, 0, 65544, 1572885, 0, 131074, 1703932, 0, 65536, 1703933, 0, 65537, 1703934, 0, 65537, 1703935, 0, 65541, 1638400, 0, 131073, 1638401, 0, 131074, 1638420, 0, 131075, 1769468, 0, 65536, 1769469, 0, 65537, 1769470, 0, 65537, 1769471, 0, 65538, 1835004, 0, 65536, 1835005, 0, 65537, 1835006, 0, 65537, 1835007, 0, 65538, 1900540, 0, 65536, 1900541, 0, 65537, 1900542, 0, 65537, 1900543, 0, 65538, 1966076, 0, 65536, 1966077, 0, 65537, 1966078, 0, 65537, 1966079, 0, 65538, 2031612, 0, 65536, 2031613, 0, 65537, 2031614, 0, 65537, 2031615, 0, 65538, 2097148, 0, 65536, 2097149, 0, 65537, 2097150, 0, 65537, 2097151, 0, 65538, 2162684, 0, 65536, 2162685, 0, 65537, 2162686, 0, 65537, 2162687, 0, 65538, 2228220, 0, 65536, 2228221, 0, 65537, 2228222, 0, 65537, 2228223, 0, 65538, 2293756, 0, 65536, 2293757, 0, 65537, 2293758, 0, 65537, 2293759, 0, 65538, 2359291, 0, 0, 2359292, 0, 131078, 2359293, 0, 65537, 2359294, 0, 65537, 2359295, 0, 65538, 2424827, 0, 65536, 2424828, 0, 65537, 2424829, 0, 65537, 2424830, 0, 65537, 2424831, 0, 65538, 2490363, 0, 65536, 2490364, 0, 65537, 2490365, 0, 65537, 2490366, 0, 65537, 2490367, 0, 65538, 2555899, 0, 65536, 2555900, 0, 65537, 2555901, 0, 65537, 2555902, 0, 65537, 2555903, 0, 65538, 2621435, 0, 65536, 2621436, 0, 65537, 2621437, 0, 65537, 2621438, 0, 65537, 2621439, 0, 65538, 2686971, 0, 65536, 2686972, 0, 65537, 2686973, 0, 65537, 2686974, 0, 65537, 2686975, 0, 65538, 2752506, 0, 0, 2752507, 0, 131078, 2752508, 0, 65537, 2752509, 0, 65537, 2752510, 0, 65537, 2752511, 0, 65538, 2818042, 0, 65536, 2818043, 0, 65537, 2818044, 0, 65537, 2818045, 0, 65537, 2818046, 0, 65537, 2818047, 0, 65538, 2883578, 0, 65536, 2883579, 0, 65537, 2883580, 0, 65537, 2883581, 0, 65537, 2883582, 0, 65537, 2883583, 0, 65538, 2949114, 0, 131072, 2949115, 0, 131073, 2949116, 0, 131073, 2949117, 0, 131073, 2949118, 0, 131073, 2949119, 0, 131074 )
 
 [node name="Jack" parent="." instance=ExtResource( 1 )]
-visible = false
-position = Vector2( 466.353, 322.489 )
+position = Vector2( 343, 397.428 )
 canmove = false
 
 [node name="Portal" type="Area2D" parent="."]
-position = Vector2( 448.783, 305.388 )
-scale = Vector2( 1e-05, 1e-05 )
+position = Vector2( 1140.23, 532.096 )
 collision_layer = 0
 collision_mask = 2
 __meta__ = {
@@ -915,9 +870,8 @@ color = Color( 0.0901961, 0.0156863, 0.0901961, 0.568627 )
 polygon = PoolVector2Array( 20.087, 163.791, -36.0646, 162.731, -60.4321, 144.72, -42.4213, 134.126, 20.087, 136.245, 47.6331, 151.077 )
 
 [node name="Sprite" type="Sprite" parent="Portal"]
-material = SubResource( 97 )
 position = Vector2( 4.23779, 9.53522 )
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Portal"]
 visible = false
@@ -925,31 +879,29 @@ polygon = PoolVector2Array( -11.6969, 89.6282, 29.6222, 43.0118, 29.6222, -23.73
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Portal"]
 autoplay = "Nueva Animación"
-"anims/Nueva Animación" = SubResource( 98 )
+"anims/Nueva Animación" = SubResource( 97 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 640, 360 )
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 1.5, 1.5 )
 
 [node name="DialogsScene" parent="Camera2D" instance=ExtResource( 6 )]
 visible = false
 position = Vector2( -640, -360 )
-CharSpr = ExtResource( 10 )
+CharSpr = ExtResource( 7 )
 CharScale = Vector2( 2, 2 )
-BoxSpr = ExtResource( 9 )
+BoxSpr = ExtResource( 8 )
 BoxScale = Vector2( 60, 12 )
-BoxColor = Color( 0.67451, 0.909804, 0.662745, 1 )
+text1 = "Finally, after 30 freaking years of research I will be"
+text2 = "able to enter into the world of dead"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Entertotheworld"
-anims/Entertotheworld = SubResource( 99 )
+autoplay = "Prologue"
+anims/Prologue = SubResource( 98 )
+anims/Start = SubResource( 99 )
 
-[node name="DialogsAnim" type="AnimationPlayer" parent="."]
-anims/ConfusedDialog = SubResource( 100 )
-
-[node name="DarkTome" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1772.66, 1209.44 )
-
+[connection signal="area_entered" from="Portal" to="." method="_on_Portal_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="animation_finished" from="DialogsAnim" to="." method="_on_DialogsAnim_animation_finished"]
+
+[editable path="Jack"]

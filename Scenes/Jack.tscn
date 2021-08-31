@@ -1,24 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Sprites/Luz.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/Jack.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Jack.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/JackAntes.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/JackTransforming.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/JackDmg2.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Weapons/InPlayer/Books/DarkTome.tscn" type="PackedScene" id=7]
 
-[sub_resource type="CanvasItemMaterial" id=3]
-light_mode = 1
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 52.1851
-
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 6.0
 loop = true
@@ -30,13 +20,12 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 0,
 "values": [ Vector2( 0.0396118, -9.85186 ), Vector2( 0.04, -16.852 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "walk"
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -47,35 +36,94 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 0,
 "values": [ Vector2( 0.0396118, -9.85186 ), Vector2( 0.04, -16.852 ) ]
 }
 
+[sub_resource type="CanvasItemMaterial" id=3]
+light_mode = 1
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Transformation",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Before",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 44.7245, 24.0229 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 84.2604
+
 [node name="Jack" type="KinematicBody2D"]
 collision_layer = 0
 script = ExtResource( 3 )
+DarkTome = ExtResource( 7 )
 
-[node name="Light2D" type="Light2D" parent="."]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 1 )
-color = Color( 0.0377655, 0.878906, 0.194043, 1 )
-energy = 0.5
-shadow_enabled = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 1 )
+anims/walk = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 3 )
-position = Vector2( 0.0397615, -12.5514 )
-frames = SubResource( 1 )
+position = Vector2( 0.0396118, -9.85186 )
+frames = SubResource( 4 )
+playing = true
 
 [node name="Polygon2D" type="Polygon2D" parent="AnimatedSprite"]
 position = Vector2( 48.0797, -175.313 )
 color = Color( 0, 0, 0, 0.376471 )
 polygon = PoolVector2Array( -110.216, 266.28, 22.3805, 263.896, 37.8805, 258.896, 18.8805, 244.396, -111.477, 242.982, -132.453, 253.117 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, 10 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+color = Color( 0.0377655, 0.878906, 0.194043, 1 )
+energy = 0.5
+shadow_enabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 5 )
-anims/walk = SubResource( 4 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 33 )
+shape = SubResource( 5 )
+
+[node name="AmbientDetectionArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AmbientDetectionArea"]
+position = Vector2( 4, 0 )
+shape = SubResource( 6 )
+
+[node name="ItemsDetection" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ItemsDetection"]
+position = Vector2( 4, 0 )
+shape = SubResource( 6 )
+
+[node name="Weapons" type="Node2D" parent="."]
+position = Vector2( 9.1727, 26.2204 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[connection signal="area_entered" from="ItemsDetection" to="." method="_on_ItemsDetection_area_entered"]
+[connection signal="area_exited" from="ItemsDetection" to="." method="_on_ItemsDetection_area_exited"]

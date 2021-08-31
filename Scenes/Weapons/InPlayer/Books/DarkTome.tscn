@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/Luz.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Weapons/Books/InitialWeapon.png" type="Texture" id=2]
+
+[node name="DarkTome" type="Node2D"]
+position = Vector2( 0, -10 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+color = Color( 0.396078, 0.109804, 0.32549, 1 )
